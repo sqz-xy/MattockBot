@@ -8,5 +8,15 @@ client.once('ready', () => {
     console.log(`${client.user.tag} has logged in!`);
 })
 
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const { commandName } = interaction;
+
+	if (commandName === 'ping') {
+		await interaction.reply('Pong!');
+	}
+});
+
 client.login(config.token);
 
